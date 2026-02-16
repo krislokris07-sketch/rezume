@@ -45,7 +45,7 @@
         .hero-subtitle {
             font-size: 1.3rem;
             max-width: 600px;
-            margin: 0 auto 15px;
+            margin: 0 auto 10px;
             color: #666;
             font-family: 'Caveat', cursive;
         }
@@ -53,7 +53,7 @@
         .hero-location {
             font-size: 1rem;
             color: #e4a3b5;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             letter-spacing: 0.5px;
         }
 
@@ -95,10 +95,32 @@
         /* Шапка */
         .hero {
             background-color: #fff;
-            padding: 100px 0 40px;
+            padding: 60px 0 30px; /* УМЕНЬШИЛА ОТСТУПЫ */
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Декоративная линия под шапкой */
+        .hero-decoration {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hero-decoration-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #f9d8e4, #e4a3b5, #f9d8e4, transparent);
+        }
+
+        .hero-decoration-star {
+            width: 20px;
+            height: 20px;
+            background: url('Star 1.png') no-repeat center/contain;
+            opacity: 0.4;
         }
 
         /* Ножницы в шапке */
@@ -129,7 +151,7 @@
         /* О себе */
         .about {
             max-width: 600px;
-            margin: 0 auto 60px;
+            margin: 0 auto 40px; /* УМЕНЬШИЛА ОТСТУП */
             text-align: center;
             padding: 0 20px;
         }
@@ -465,6 +487,13 @@
                 спб · открыта к заказам
             </div>
             <a href="#contact" class="btn">сказать привет</a>
+            
+            <!-- ДЕКОР В ШАПКЕ -->
+            <div class="hero-decoration">
+                <div class="hero-decoration-line"></div>
+                <div class="hero-decoration-star"></div>
+                <div class="hero-decoration-line"></div>
+            </div>
         </div>
     </header>
 
@@ -633,6 +662,7 @@
 
 </body>
 </html>
+
 
 
 
