@@ -92,9 +92,9 @@
             opacity: 0.5;
         }
 
-        /* Шапка */
+        /* Шапка — ТЕПЕРЬ РОЗОВАЯ НА ВСЮ ШИРИНУ */
         .hero {
-            background-color: #fff;
+            background-color: #fef8fb;  /* НЕЖНО-РОЗОВЫЙ */
             padding: 60px 0 30px;
             text-align: center;
             position: relative;
@@ -129,17 +129,10 @@
             transform: translateY(-50%) rotate(5deg);
         }
 
-        /* Контейнер с текстом ПОВЕРХ звёзд — ТЕПЕРЬ С РОЗОВЫМ ФОНОМ */
+        /* Контейнер с текстом */
         .hero .container {
             position: relative;
             z-index: 2;
-            background-color: #fef8fb;  /* НЕЖНО-РОЗОВЫЙ */
-            padding: 40px 30px;
-            border-radius: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 4px 12px rgba(228, 163, 181, 0.1);
         }
 
         /* Декоративная линия под шапкой */
@@ -440,11 +433,6 @@
 
         /* Мобилки */
         @media (max-width: 600px) {
-            .hero .container {
-                padding: 30px 20px;
-                max-width: 90%;
-            }
-            
             .hero-title {
                 font-size: 2.2rem;
             }
@@ -531,13 +519,12 @@
 </head>
 <body>
 
-    <!-- ШАПКА -->
+    <!-- ШАПКА (ТЕПЕРЬ ВСЯ РОЗОВАЯ, ВКЛЮЧАЯ ФОН ПОД ЗВЁЗДАМИ) -->
     <header class="hero">
         <!-- БОЛЬШИЕ ЗВЁЗДЫ ПО БОКАМ -->
         <div class="hero-big-star-left"></div>
         <div class="hero-big-star-right"></div>
         
-        <!-- ЭТОТ БЛОК ТЕПЕРЬ С НЕЖНО-РОЗОВЫМ ФОНОМ -->
         <div class="container">
             <h1 class="hero-title">крис</h1>
             <p class="hero-subtitle">
