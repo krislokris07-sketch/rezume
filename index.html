@@ -25,6 +25,33 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>крис — коллажи</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@400..700&display=swap">
+    
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: #ffffff;
+            color: #2d2d2d;
+            line-height: 1.6;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 10 Q 30 5, 40 20" stroke="%23f9d8e4" fill="none" stroke-width="0.5"/><circle cx="80" cy="20" r="2" fill="%23f9d8e4" opacity="0.3"/></svg>');
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 0 20px;
             position: relative;
         }
@@ -135,7 +162,7 @@
             z-index: 2;
         }
 
-        /* Декоративная линия под шапкой */
+        /* Декоративная линия под шапкой - ТЕПЕРЬ ДЛИННЕЕ */
         .hero-decoration {
             margin-top: 25px;
             display: flex;
@@ -144,12 +171,10 @@
             gap: 15px;
         }
 
-        css
-.hero-decoration-line {
-    width: 120px;        /* увеличили с 60px до 120px */
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #f9d8e4, #e4a3b5, #f9d8e4, transparent);
-}
+        .hero-decoration-line {
+            width: 120px;        /* УВЕЛИЧИЛА ДЛИНУ */
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #f9d8e4, #e4a3b5, #f9d8e4, transparent);
         }
 
         .hero-decoration-star {
@@ -458,6 +483,10 @@
                 height: 100px;
                 opacity: 0.15;
             }
+
+            .hero-decoration-line {
+                width: 60px;  /* на мобилках короче */
+            }
         }
 
         /* ===== СТИЛИ ДЛЯ ПОЛНОЭКРАННОГО ПРОСМОТРА ===== */
@@ -537,7 +566,7 @@
             </div>
             <a href="#contact" class="btn">сказать привет</a>
             
-            <!-- ДЕКОР ПОД КНОПКОЙ -->
+            <!-- ДЕКОР ПОД КНОПКОЙ (ТЕПЕРЬ С ДЛИННОЙ ЛИНИЕЙ) -->
             <div class="hero-decoration">
                 <div class="hero-decoration-line"></div>
                 <div class="hero-decoration-star"></div>
@@ -711,5 +740,6 @@
 
 </body>
 </html>
+
 
 
