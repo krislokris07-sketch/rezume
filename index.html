@@ -216,7 +216,7 @@
             display: block;
             background-color: #f5f5f5;
             border: 1px solid #f0f0f0;
-            cursor: pointer; /* Показываем, что картинка кликабельна */
+            cursor: pointer;
             transition: opacity 0.2s;
         }
 
@@ -408,7 +408,11 @@
             <div class="grid">
                 
                 <div class="card">
-                    <img src="site-preview.gif" alt="превью сайта с анимацией" class="card-img" onclick="openModal(this)">
+                    <!-- ВИДЕО ВМЕСТО ГИФКИ -->
+                    <video class="card-img" autoplay loop muted playsinline onclick="openModal(this)">
+                        <source src="site-preview.mp4" type="video/mp4">
+                        Твой браузер не поддерживает видео.
+                    </video>
                     <p class="card-caption">концепт сайта</p>
                 </div>
                 
@@ -448,9 +452,16 @@
         const modalImg = document.getElementById('modalImage');
 
         // Функция открытия модального окна
-        function openModal(imgElement) {
+        function openModal(element) {
             modal.style.display = 'block';
-            modalImg.src = imgElement.src;
+            // Если это видео, берём его постер или первый кадр
+            if (element.tagName === 'VIDEO') {
+                // Для видео показываем постер или просто чёрный фон с текстом
+                modalImg.src = element.poster || ''; // Если есть постер
+                // Можно добавить обработку видео в модалке, но пока оставим так
+            } else {
+                modalImg.src = element.src;
+            }
         }
 
         // Функция закрытия
@@ -458,7 +469,7 @@
             modal.style.display = 'none';
         }
 
-        // Закрытие по клику вне картинки (на затемнённый фон)
+        // Закрытие по клику вне картинки
         function closeModalOnClick(event) {
             if (event.target === modal) {
                 closeModal();
@@ -475,4 +486,6 @@
 
 </body>
 </html>
+</html>
+
 
