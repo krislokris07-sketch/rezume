@@ -95,83 +95,44 @@
         /* Шапка */
         .hero {
             background-color: #fff;
-            padding: 40px 0 30px;        /* уменьшила верхний отступ */
+            padding: 60px 0 30px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        /* ВЫДЕЛЯЕМ БЛОК С ИМЕНЕМ И КНОПКОЙ */
-        .hero .container {
-            position: relative;
-            max-width: 650px;              /* сузила */
-            margin-left: auto;
-            margin-right: auto;
-            padding: 25px 40px;            /* уменьшила внутренние отступы */
-            border: 1px dashed #e4a3b5;
-            border-radius: 30px;
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(2px);
-            box-shadow: 0 4px 20px rgba(228, 163, 181, 0.1);
-        }
-
-        /* ЗВЁЗДОЧКИ ПО УГЛАМ */
-        .hero .container::before,
-        .hero .container::after {
-            content: '';
+        /* ДЕКОР ПО БОКАМ В ШАПКЕ */
+        .hero-left-decoration,
+        .hero-right-decoration {
             position: absolute;
-            width: 30px;
-            height: 30px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.6;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 120px;
+            height: 180px;
             pointer-events: none;
+            opacity: 0.3;
+            z-index: 1;
         }
 
-        .hero .container::before {
-            background-image: url('Star 1.png');
-            top: -15px;
-            left: -15px;
-            transform: rotate(-5deg);
-        }
-
-        .hero .container::after {
-            background-image: url('Star 3.png');
-            top: -15px;
-            right: -15px;
-            transform: rotate(5deg);
-        }
-
-        .hero .container .corner-bottom-left,
-        .hero .container .corner-bottom-right {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background-size: contain;
+        .hero-left-decoration {
+            left: 10px;
+            background-image: url('Star 1.png'), url('Star 3.png'), url('Star 1.png');
             background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.6;
-            pointer-events: none;
+            background-size: 30px, 20px, 25px;
+            background-position: left top, center, left bottom;
         }
 
-        .hero .container .corner-bottom-left {
-            background-image: url('Star 3.png');
-            bottom: -15px;
-            left: -15px;
-            transform: rotate(5deg);
-        }
-
-        .hero .container .corner-bottom-right {
-            background-image: url('Star 1.png');
-            bottom: -15px;
-            right: -15px;
-            transform: rotate(-5deg);
+        .hero-right-decoration {
+            right: 10px;
+            background-image: url('Star 3.png'), url('Star 1.png'), url('Star 3.png');
+            background-repeat: no-repeat;
+            background-size: 30px, 20px, 25px;
+            background-position: right top, center, right bottom;
         }
 
         /* Декоративная линия под шапкой */
         .hero-decoration {
-            margin-top: 20px;
+            margin-top: 25px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -465,11 +426,6 @@
 
         /* Мобилки */
         @media (max-width: 600px) {
-            .hero .container {
-                padding: 20px 25px;
-                max-width: 90%;
-            }
-            
             .hero-title {
                 font-size: 2.2rem;
             }
@@ -487,12 +443,9 @@
                 font-size: 1rem;
             }
 
-            .hero .container::before,
-            .hero .container::after,
-            .hero .container .corner-bottom-left,
-            .hero .container .corner-bottom-right {
-                width: 20px;
-                height: 20px;
+            .hero-left-decoration,
+            .hero-right-decoration {
+                display: none;
             }
         }
 
@@ -559,11 +512,11 @@
 
     <!-- ШАПКА -->
     <header class="hero">
+        <!-- ДЕКОР ПО БОКАМ -->
+        <div class="hero-left-decoration"></div>
+        <div class="hero-right-decoration"></div>
+        
         <div class="container">
-            <!-- ЗВЁЗДОЧКИ ПО УГЛАМ -->
-            <div class="corner-bottom-left"></div>
-            <div class="corner-bottom-right"></div>
-            
             <h1 class="hero-title">крис</h1>
             <p class="hero-subtitle">
                 собираю коллажи и отрываю от сердца
@@ -573,7 +526,7 @@
             </div>
             <a href="#contact" class="btn">сказать привет</a>
             
-            <!-- ДЕКОР ПОД КНОПКОЙ -->
+            <!-- ДЕКОР В ШАПКЕ -->
             <div class="hero-decoration">
                 <div class="hero-decoration-line"></div>
                 <div class="hero-decoration-star"></div>
