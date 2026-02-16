@@ -332,6 +332,21 @@
             box-shadow: 0 0 30px rgba(228, 163, 181, 0.5);
         }
 
+        /* Специально для видео в модалке */
+        .modal-video {
+            max-width: 90%;
+            max-height: 90%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid #f9d8e4;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(228, 163, 181, 0.5);
+        }
+
         .close {
             position: absolute;
             top: 20px;
@@ -372,28 +387,28 @@
                 <!-- Карточка 1 -->
                 <div class="card">
                     <div class="pin"></div>
-                    <img src="collage-1.jpg" alt="коллаж причина" class="card-img" onclick="openModal(this)">
+                    <img src="collage-1.jpg" alt="коллаж причина" class="card-img" onclick="openModal('image', this.src)">
                     <p class="card-caption">«причина», 2025</p>
                 </div>
                 
                 <!-- Карточка 2 -->
                 <div class="card">
                     <div class="pin"></div>
-                    <img src="collage-2.jpg" alt="коллаж табачная лавка" class="card-img" onclick="openModal(this)">
+                    <img src="collage-2.jpg" alt="коллаж табачная лавка" class="card-img" onclick="openModal('image', this.src)">
                     <p class="card-caption">«табачная лавка», 2025</p>
                 </div>
                 
                 <!-- Карточка 3 -->
                 <div class="card">
                     <div class="pin"></div>
-                    <img src="collage-3.jpg" alt="коллаж детское счастье" class="card-img" onclick="openModal(this)">
+                    <img src="collage-3.jpg" alt="коллаж детское счастье" class="card-img" onclick="openModal('image', this.src)">
                     <p class="card-caption">«детское счастье», 2024</p>
                 </div>
 
                 <!-- Карточка 4 -->
                 <div class="card">
                     <div class="pin"></div>
-                    <img src="collage-4.jpg" alt="коллаж где ты" class="card-img" onclick="openModal(this)">
+                    <img src="collage-4.jpg" alt="коллаж где ты" class="card-img" onclick="openModal('image', this.src)">
                     <p class="card-caption">«где ты?», 2023</p>
                 </div>
 
@@ -408,21 +423,20 @@
             <div class="grid">
                 
                 <div class="card">
-                    <!-- ВИДЕО ВМЕСТО ГИФКИ -->
-                    <video class="card-img" autoplay loop muted playsinline onclick="openModal(this)">
+                    <!-- ВИДЕО -->
+                    <video class="card-img" autoplay loop muted playsinline onclick="openModal('video', 'site-preview.mp4')">
                         <source src="site-preview.mp4" type="video/mp4">
-                        Твой браузер не поддерживает видео.
                     </video>
                     <p class="card-caption">концепт сайта</p>
                 </div>
                 
                 <div class="card">
-                    <img src="cards-preview.jpg" alt="карточки для WB" class="card-img" onclick="openModal(this)">
+                    <img src="cards-preview.jpg" alt="карточки для WB" class="card-img" onclick="openModal('image', this.src)">
                     <p class="card-caption">карточки для WB</p>
                 </div>
                 
                 <div class="card">
-                    <img src="postcard-preview.jpg" alt="авторские открытки" class="card-img" onclick="openModal(this)">
+                    <img src="postcard-preview.jpg" alt="авторские открытки" class="card-img" onclick="openModal('image', this.src)">
                     <p class="card-caption">авторские открытки</p>
                 </div>
 
@@ -440,43 +454,53 @@
         </div>
     </footer>
 
-    <!-- МОДАЛЬНОЕ ОКНО (для полноэкранного просмотра) -->
+    <!-- МОДАЛЬНОЕ ОКНО -->
     <div id="myModal" class="modal" onclick="closeModalOnClick(event)">
         <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
+        <!-- Сюда будет вставляться либо картинка, либо видео -->
+        <div id="modalContent"></div>
     </div>
 
     <script>
-        // Получаем элементы
         const modal = document.getElementById('myModal');
-        const modalImg = document.getElementById('modalImage');
+        const modalContent = document.getElementById('modalContent');
 
-        // Функция открытия модального окна
-        function openModal(element) {
+        function openModal(type, src) {
             modal.style.display = 'block';
-            // Если это видео, берём его постер или первый кадр
-            if (element.tagName === 'VIDEO') {
-                // Для видео показываем постер или просто чёрный фон с текстом
-                modalImg.src = element.poster || ''; // Если есть постер
-                // Можно добавить обработку видео в модалке, но пока оставим так
-            } else {
-                modalImg.src = element.src;
+            
+            // Очищаем предыдущее содержимое
+            modalContent.innerHTML = '';
+            
+            if (type === 'image') {
+                // Если картинка
+                const img = document.createElement('img');
+                img.src = src;
+                img.className = 'modal-content';
+                modalContent.appendChild(img);
+            } else if (type === 'video') {
+                // Если видео
+                const video = document.createElement('video');
+                video.src = src;
+                video.className = 'modal-video';
+                video.controls = true;
+                video.autoplay = true;
+                video.loop = true;
+                modalContent.appendChild(video);
             }
         }
 
-        // Функция закрытия
         function closeModal() {
             modal.style.display = 'none';
+            // Останавливаем видео при закрытии
+            modalContent.innerHTML = '';
         }
 
-        // Закрытие по клику вне картинки
         function closeModalOnClick(event) {
             if (event.target === modal) {
                 closeModal();
             }
         }
 
-        // Закрытие по клавише ESC
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape' && modal.style.display === 'block') {
                 closeModal();
@@ -486,6 +510,4 @@
 
 </body>
 </html>
-</html>
-
 
