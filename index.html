@@ -19,13 +19,42 @@
             background-color: #ffffff;
             color: #2d2d2d;
             line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* ЛЁГКАЯ ТЕКСТУРА ПО ВСЕМУ ФОНУ */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
             background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 10 Q 30 5, 40 20" stroke="%23f9d8e4" fill="none" stroke-width="0.5"/><circle cx="80" cy="20" r="2" fill="%23f9d8e4" opacity="0.3"/></svg>');
+            z-index: -1;
+        }
+
+        /* ДЕКОРАТИВНЫЙ ГРАДИЕНТ ПО КРАЯМ */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(ellipse at 50% 50%, transparent 60%, rgba(249, 216, 228, 0.1) 100%),
+                        radial-gradient(circle at 0% 0%, rgba(228, 163, 181, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, rgba(228, 163, 181, 0.03) 0%, transparent 50%);
+            z-index: -1;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px; /* ЧУТЬ УЖЕ, ЧТОБЫ БЫЛО УЮТНЕЕ */
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px; /* БОКОВЫЕ ОТСТУПЫ УВЕЛИЧЕНЫ */
             position: relative;
         }
 
@@ -95,7 +124,7 @@
         /* Шапка */
         .hero {
             background-color: #fff;
-            padding: 60px 0 30px; /* УМЕНЬШИЛА ОТСТУПЫ */
+            padding: 60px 0 30px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -151,7 +180,7 @@
         /* О себе */
         .about {
             max-width: 600px;
-            margin: 0 auto 40px; /* УМЕНЬШИЛА ОТСТУП */
+            margin: 0 auto 40px;
             text-align: center;
             padding: 0 20px;
         }
@@ -397,6 +426,10 @@
 
         /* Мобилки */
         @media (max-width: 600px) {
+            .container {
+                padding: 0 20px; /* НА ТЕЛЕФОНАХ МЕНЬШЕ ОТСТУПЫ */
+            }
+            
             .hero-title {
                 font-size: 2.2rem;
             }
@@ -499,11 +532,13 @@
 
     <!-- О СЕБЕ -->
     <div class="about">
-        <div class="about-text">
-            <p>делаю коллажи вручную и в цифре. люблю фактуры, тишину и старые журналы.<br>
-            сотрудничаю с малыми брендами, музыкантами и магазинами</p>
+        <div class="container">
+            <div class="about-text">
+                <p>делаю коллажи вручную и в цифре. люблю фактуры, тишину и старые журналы.<br>
+                сотрудничаю с малыми брендами, музыкантами и магазинами</p>
+            </div>
+            <div class="about-divider"></div>
         </div>
-        <div class="about-divider"></div>
     </div>
 
     <!-- КОЛЛАЖИ -->
@@ -594,9 +629,11 @@
 
     <!-- CTA -->
     <div class="cta">
-        <h3 class="cta-title">есть идея для коллажа?</h3>
-        <p class="cta-text">расскажи! вместе придумаем, как её собрать</p>
-        <a href="#contact" class="btn btn-small">написать</a>
+        <div class="container">
+            <h3 class="cta-title">есть идея для коллажа?</h3>
+            <p class="cta-text">расскажи! вместе придумаем, как её собрать</p>
+            <a href="#contact" class="btn btn-small">написать</a>
+        </div>
     </div>
 
     <!-- ПОДВАЛ -->
@@ -662,9 +699,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
