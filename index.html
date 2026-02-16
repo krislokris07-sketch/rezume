@@ -216,6 +216,12 @@
             display: block;
             background-color: #f5f5f5;
             border: 1px solid #f0f0f0;
+            cursor: pointer; /* Показываем, что картинка кликабельна */
+            transition: opacity 0.2s;
+        }
+
+        .card-img:hover {
+            opacity: 0.95;
         }
 
         .card-caption {
@@ -298,6 +304,50 @@
                 height: 40px;
             }
         }
+
+        /* ===== СТИЛИ ДЛЯ ПОЛНОЭКРАННОГО ПРОСМОТРА ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid #f9d8e4;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(228, 163, 181, 0.5);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f9d8e4;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 1001;
+        }
+
+        .close:hover {
+            color: #e4a3b5;
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -322,28 +372,28 @@
                 <!-- Карточка 1 -->
                 <div class="card">
                     <div class="pin"></div>
-                    <img src="collage-1.jpg" alt="коллаж" class="card-img">
+                    <img src="collage-1.jpg" alt="коллаж причина" class="card-img" onclick="openModal(this)">
                     <p class="card-caption">«причина», 2025</p>
                 </div>
                 
                 <!-- Карточка 2 -->
                 <div class="card">
                     <div class="pin"></div>
-                    <img src="collage-2.jpg" alt="коллаж" class="card-img">
+                    <img src="collage-2.jpg" alt="коллаж табачная лавка" class="card-img" onclick="openModal(this)">
                     <p class="card-caption">«табачная лавка», 2025</p>
                 </div>
                 
                 <!-- Карточка 3 -->
                 <div class="card">
                     <div class="pin"></div>
-                    <img src="collage-3.jpg" alt="коллаж" class="card-img">
+                    <img src="collage-3.jpg" alt="коллаж детское счастье" class="card-img" onclick="openModal(this)">
                     <p class="card-caption">«детское счастье», 2024</p>
                 </div>
 
                 <!-- Карточка 4 -->
                 <div class="card">
                     <div class="pin"></div>
-                    <img src="collage-4.jpg" alt="коллаж" class="card-img">
+                    <img src="collage-4.jpg" alt="коллаж где ты" class="card-img" onclick="openModal(this)">
                     <p class="card-caption">«где ты?», 2023</p>
                 </div>
 
@@ -358,17 +408,17 @@
             <div class="grid">
                 
                 <div class="card">
-                   <img src="site-preview.gif" alt="превью сайта с анимацией" class="card-img">
+                    <img src="site-preview.gif" alt="превью сайта с анимацией" class="card-img" onclick="openModal(this)">
                     <p class="card-caption">концепт сайта</p>
                 </div>
                 
                 <div class="card">
-                    <img src="cards-preview.jpg" alt="карточки" class="card-img">
+                    <img src="cards-preview.jpg" alt="карточки для WB" class="card-img" onclick="openModal(this)">
                     <p class="card-caption">карточки для WB</p>
                 </div>
                 
                 <div class="card">
-                    <img src="postcard-preview.jpg" alt="открытка" class="card-img">
+                    <img src="postcard-preview.jpg" alt="авторские открытки" class="card-img" onclick="openModal(this)">
                     <p class="card-caption">авторские открытки</p>
                 </div>
 
@@ -386,7 +436,43 @@
         </div>
     </footer>
 
+    <!-- МОДАЛЬНОЕ ОКНО (для полноэкранного просмотра) -->
+    <div id="myModal" class="modal" onclick="closeModalOnClick(event)">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Получаем элементы
+        const modal = document.getElementById('myModal');
+        const modalImg = document.getElementById('modalImage');
+
+        // Функция открытия модального окна
+        function openModal(imgElement) {
+            modal.style.display = 'block';
+            modalImg.src = imgElement.src;
+        }
+
+        // Функция закрытия
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Закрытие по клику вне картинки (на затемнённый фон)
+        function closeModalOnClick(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Закрытие по клавише ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                closeModal();
+            }
+        });
+    </script>
+
 </body>
 </html>
-
 
