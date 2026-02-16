@@ -37,9 +37,24 @@
 
         .hero-title {
             font-size: 3rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             font-family: 'Caveat', cursive;
             color: #e4a3b5;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 15px;
+            color: #666;
+            font-family: 'Caveat', cursive;
+        }
+
+        .hero-location {
+            font-size: 1rem;
+            color: #e4a3b5;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
         }
 
         .section-title {
@@ -80,7 +95,7 @@
         /* Шапка */
         .hero {
             background-color: #fff;
-            padding: 100px 0 60px;
+            padding: 100px 0 40px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -111,11 +126,29 @@
             transform: rotate(15deg) scaleX(-1);
         }
 
-        .hero-subtitle {
-            font-size: 1.2rem;
+        /* О себе */
+        .about {
             max-width: 600px;
-            margin: 0 auto 30px;
-            color: #666;
+            margin: 0 auto 60px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .about-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f9d8e4, #e4a3b5, #f9d8e4, transparent);
+            margin: 25px auto;
         }
 
         /* Кнопка */
@@ -136,6 +169,12 @@
         .btn:hover {
             background-color: #e4a3b5;
             color: #fff;
+        }
+
+        .btn-small {
+            padding: 8px 24px;
+            font-size: 0.95rem;
+            margin-top: 10px;
         }
 
         /* Секции */
@@ -230,6 +269,41 @@
             color: #555;
             margin-top: 15px;
             font-style: italic;
+            line-height: 1.5;
+        }
+
+        .card-caption span {
+            display: block;
+            font-size: 0.85rem;
+            color: #e4a3b5;
+            margin-top: 5px;
+            font-style: normal;
+        }
+
+        /* CTA секция */
+        .cta {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #fff;
+            border-top: 1px solid #f9d8e4;
+            border-bottom: 1px solid #f9d8e4;
+            margin: 40px 0;
+        }
+
+        .cta-title {
+            font-family: 'Caveat', cursive;
+            font-size: 2.2rem;
+            color: #e4a3b5;
+            margin-bottom: 15px;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 25px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Подвал */
@@ -237,7 +311,7 @@
             background-color: #f9d8e4;
             color: #2d2d2d;
             text-align: center;
-            padding: 60px 0;
+            padding: 60px 0 40px;
             margin-top: 40px;
             position: relative;
             overflow: hidden;
@@ -283,6 +357,16 @@
             border-bottom: 1px solid #2d2d2d;
         }
 
+        .footer-social {
+            margin: 30px 0 20px;
+        }
+
+        .footer-social a {
+            margin: 0 10px;
+            border-bottom: none;
+            font-size: 1.1rem;
+        }
+
         .footer-copyright {
             margin-top: 40px;
             font-size: 0.9rem;
@@ -302,6 +386,10 @@
             .hero::before, .hero::after {
                 width: 40px;
                 height: 40px;
+            }
+
+            .about-text {
+                font-size: 1rem;
             }
         }
 
@@ -371,11 +459,23 @@
         <div class="container">
             <h1 class="hero-title">крис</h1>
             <p class="hero-subtitle">
-                дизайнер и художник-коллажист
+                собираю коллажи из бумаги, ножниц и чувств
             </p>
+            <div class="hero-location">
+                спб · открыта к заказам
+            </div>
             <a href="#contact" class="btn">сказать привет</a>
         </div>
     </header>
+
+    <!-- О СЕБЕ -->
+    <div class="about">
+        <div class="about-text">
+            <p>делаю коллажи вручную и в цифре. люблю фактуры, тишину и старые журналы.<br>
+            сотрудничаю с малыми брендами, музыкантами и магазинами</p>
+        </div>
+        <div class="about-divider"></div>
+    </div>
 
     <!-- КОЛЛАЖИ -->
     <section class="section collages" id="collages">
@@ -387,28 +487,40 @@
                 <div class="card">
                     <div class="pin"></div>
                     <img src="collage-1.jpg" alt="коллаж причина" class="card-img" onclick="openModal('image', 'collage-1.jpg')">
-                    <p class="card-caption">«причина», 2025</p>
+                    <p class="card-caption">
+                        «причина», 2025
+                        <span>i don't know what i'm looking for</span>
+                    </p>
                 </div>
                 
                 <!-- Карточка 2 -->
                 <div class="card">
                     <div class="pin"></div>
                     <img src="collage-2.jpg" alt="коллаж табачная лавка" class="card-img" onclick="openModal('image', 'collage-2.jpg')">
-                    <p class="card-caption">«табачная лавка», 2025</p>
+                    <p class="card-caption">
+                        «табачная лавка», 2025
+                        <span>дым сигарет с ментолом</span>
+                    </p>
                 </div>
                 
                 <!-- Карточка 3 -->
                 <div class="card">
                     <div class="pin"></div>
                     <img src="collage-3.jpg" alt="коллаж детское счастье" class="card-img" onclick="openModal('image', 'collage-3.jpg')">
-                    <p class="card-caption">«детское счастье», 2024</p>
+                    <p class="card-caption">
+                        «детское счастье», 2024
+                        <span>помнишь, как мы бегали босиком</span>
+                    </p>
                 </div>
 
                 <!-- Карточка 4 -->
                 <div class="card">
                     <div class="pin"></div>
                     <img src="collage-4.jpg" alt="коллаж где ты" class="card-img" onclick="openModal('image', 'collage-4.jpg')">
-                    <p class="card-caption">«где ты?», 2023</p>
+                    <p class="card-caption">
+                        «где ты?», 2023
+                        <span>i'm waiting for my man</span>
+                    </p>
                 </div>
 
             </div>
@@ -425,23 +537,38 @@
                     <video class="card-img" autoplay loop muted playsinline onclick="openModal('video', 'site-preview.mp4')">
                         <source src="site-preview.mp4" type="video/mp4">
                     </video>
-                    <p class="card-caption">концепт сайта</p>
+                    <p class="card-caption">
+                        концепт сайта
+                        <span>дизайн + ai</span>
+                    </p>
                 </div>
                 
                 <div class="card">
                     <img src="cards-preview.jpg" alt="карточки для WB" class="card-img" onclick="openModal('image', 'cards-preview.jpg')">
-                    <p class="card-caption">карточки для WB</p>
+                    <p class="card-caption">
+                        карточки для WB
+                        <span>для бренда косметики</span>
+                    </p>
                 </div>
                 
                 <div class="card">
-                    <!-- МАЛЕНЬКАЯ В SRC, БОЛЬШАЯ В МОДАЛКУ -->
                     <img src="postcard-small.png" alt="авторские открытки" class="card-img" onclick="openModal('image', 'postcard-big.png')">
-                    <p class="card-caption">авторские открытки</p>
+                    <p class="card-caption">
+                        авторские открытки
+                        <span>тиражные и единственные</span>
+                    </p>
                 </div>
 
             </div>
         </div>
     </section>
+
+    <!-- CTA -->
+    <div class="cta">
+        <h3 class="cta-title">есть идея для коллажа?</h3>
+        <p class="cta-text">расскажи — вместе придумаем, как её собрать</p>
+        <a href="#contact" class="btn btn-small">написать</a>
+    </div>
 
     <!-- ПОДВАЛ -->
     <footer class="footer" id="contact">
@@ -449,7 +576,10 @@
             <h2 class="footer-title">давай знакомиться</h2>
             <p>почта: <a href="mailto:yanmellon123@yandex.ru">yanmellon123@yandex.ru</a></p>
             <p>telegram: <a href="#">@yoogurtkiid</a></p>
-            <p class="footer-copyright">✂️ крис, 2025 ✂️</p>
+            <div class="footer-social">
+                <a href="#">pinterest</a> · <a href="#">behance</a>
+            </div>
+            <p class="footer-copyright">✂️ сделано с бумагой и теплом · крис, 2025 ✂️</p>
         </div>
     </footer>
 
