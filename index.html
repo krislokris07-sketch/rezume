@@ -332,7 +332,6 @@
             box-shadow: 0 0 30px rgba(228, 163, 181, 0.5);
         }
 
-        /* Специально для видео в модалке */
         .modal-video {
             max-width: 90%;
             max-height: 90%;
@@ -387,28 +386,28 @@
                 <!-- Карточка 1 -->
                 <div class="card">
                     <div class="pin"></div>
-                    <img src="collage-1.jpg" alt="коллаж причина" class="card-img" onclick="openModal('image', this.src)">
+                    <img src="collage-1.jpg" alt="коллаж причина" class="card-img" onclick="openModal('image', 'collage-1.jpg')">
                     <p class="card-caption">«причина», 2025</p>
                 </div>
                 
                 <!-- Карточка 2 -->
                 <div class="card">
                     <div class="pin"></div>
-                    <img src="collage-2.jpg" alt="коллаж табачная лавка" class="card-img" onclick="openModal('image', this.src)">
+                    <img src="collage-2.jpg" alt="коллаж табачная лавка" class="card-img" onclick="openModal('image', 'collage-2.jpg')">
                     <p class="card-caption">«табачная лавка», 2025</p>
                 </div>
                 
                 <!-- Карточка 3 -->
                 <div class="card">
                     <div class="pin"></div>
-                    <img src="collage-3.jpg" alt="коллаж детское счастье" class="card-img" onclick="openModal('image', this.src)">
+                    <img src="collage-3.jpg" alt="коллаж детское счастье" class="card-img" onclick="openModal('image', 'collage-3.jpg')">
                     <p class="card-caption">«детское счастье», 2024</p>
                 </div>
 
                 <!-- Карточка 4 -->
                 <div class="card">
                     <div class="pin"></div>
-                    <img src="collage-4.jpg" alt="коллаж где ты" class="card-img" onclick="openModal('image', this.src)">
+                    <img src="collage-4.jpg" alt="коллаж где ты" class="card-img" onclick="openModal('image', 'collage-4.jpg')">
                     <p class="card-caption">«где ты?», 2023</p>
                 </div>
 
@@ -423,7 +422,6 @@
             <div class="grid">
                 
                 <div class="card">
-                    <!-- ВИДЕО -->
                     <video class="card-img" autoplay loop muted playsinline onclick="openModal('video', 'site-preview.mp4')">
                         <source src="site-preview.mp4" type="video/mp4">
                     </video>
@@ -431,12 +429,13 @@
                 </div>
                 
                 <div class="card">
-                    <img src="cards-preview.jpg" alt="карточки для WB" class="card-img" onclick="openModal('image', this.src)">
+                    <img src="cards-preview.jpg" alt="карточки для WB" class="card-img" onclick="openModal('image', 'cards-preview.jpg')">
                     <p class="card-caption">карточки для WB</p>
                 </div>
                 
                 <div class="card">
-                    <img src="postcard-preview.png" alt="авторские открытки" class="card-png" onclick="openModal('image', this.src)">
+                    <!-- МАЛЕНЬКАЯ В SRC, БОЛЬШАЯ В МОДАЛКУ -->
+                    <img src="postcard-small.png" alt="авторские открытки" class="card-img" onclick="openModal('image', 'postcard-big.png')">
                     <p class="card-caption">авторские открытки</p>
                 </div>
 
@@ -457,7 +456,6 @@
     <!-- МОДАЛЬНОЕ ОКНО -->
     <div id="myModal" class="modal" onclick="closeModalOnClick(event)">
         <span class="close" onclick="closeModal()">&times;</span>
-        <!-- Сюда будет вставляться либо картинка, либо видео -->
         <div id="modalContent"></div>
     </div>
 
@@ -467,18 +465,14 @@
 
         function openModal(type, src) {
             modal.style.display = 'block';
-            
-            // Очищаем предыдущее содержимое
             modalContent.innerHTML = '';
             
             if (type === 'image') {
-                // Если картинка
                 const img = document.createElement('img');
                 img.src = src;
                 img.className = 'modal-content';
                 modalContent.appendChild(img);
             } else if (type === 'video') {
-                // Если видео
                 const video = document.createElement('video');
                 video.src = src;
                 video.className = 'modal-video';
@@ -491,7 +485,6 @@
 
         function closeModal() {
             modal.style.display = 'none';
-            // Останавливаем видео при закрытии
             modalContent.innerHTML = '';
         }
 
@@ -510,5 +503,6 @@
 
 </body>
 </html>
+
 
 
